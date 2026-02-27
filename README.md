@@ -1,16 +1,22 @@
-## Hi there 👋
+# Devansh Kumar Pandey
 
-<!--
-**Ishan-5/Ishan-5** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+Electronics Engineering Student @ HBTU (2028)
 
-Here are some ideas to get you started:
+## Focus Areas
+- Embedded Systems
+- Computer Vision
+- Robotics
+- Power Electronics
+- AI + Hardware Integration
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+## Featured Project
+🔹 AI Vision HandRover Bot  
+Gesture-controlled robot using OpenCV, MediaPipe & ESP8266
+
+## Currently Working On
+- Embedded AI systems
+- Improving real-time gesture accuracy
+- Expanding hardware documentation
+
+## Connect
+LinkedIn: (paste your LinkedIn link here)
