@@ -26,4 +26,4 @@ tools    = ["PyTorch", "Hugging Face", "ChromaDB", "FastAPI", "Streamlit"]
 
 ---
 
-📫 devansh.7711@gmail.com · [LinkedIn](https://linkedin.com/in/devansh584) · [Portfolio](https://devansh-portfolio-tau.vercel.app/)
+📫 devansh.7711@gmail.com · [LinkedIn](https://linkedin.com/in/devansh584) · [Portfolio](https://portfolio-ai-ml-ten.vercel.app/)
