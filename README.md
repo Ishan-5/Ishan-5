@@ -13,14 +13,7 @@ Third-year Electronics Engineering student at **HBTU Kanpur**, working across th
 
 </div>
 
-<table>
-  <tr>
-    <td align="center"><h3>5</h3><sub>end-to-end projects</sub></td>
-    <td align="center"><h3>329</h3><sub>automated tests shipped</sub></td>
-    <td align="center"><h3>77.5%</h3><sub>routing accuracy</sub></td>
-    <td align="center"><h3>~50%</h3><sub>lower LLM cost</sub></td>
-  </tr>
-</table>
+
 
 ---
 
