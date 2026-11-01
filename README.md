@@ -1,10 +1,10 @@
 <div align="center">
 
-<img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=700&size=38&pause=1200&color=58A6FF&center=true&vCenter=true&width=760&lines=Devansh+Kumar+Pandey;AI%2FML+Engineer;LLM+Routing+%C2%B7+RAG+Evaluation;Ship+it%2C+then+measure+it" alt="Devansh Kumar Pandey" />
+<img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=700&size=36&pause=1200&color=58A6FF&center=true&vCenter=true&width=780&lines=Devansh+Kumar+Pandey;AI%2FML+Engineer;Models+%C2%B7+Evaluation+%C2%B7+Deployment;I+build+AI+that+leaves+the+notebook" alt="Devansh Kumar Pandey" />
 
-### I build the layer between *a model* and *the right model*.
+### I build AI systems that hold up outside the notebook.
 
-Third-year ECE @ HBTU Kanpur. I work on **LLM routing**, **retrieval evaluation**, and **transformer NLP** — and on the unglamorous parts that make them production-grade: benchmarks, guardrails, failover, tests.
+Third-year Electronics Engineering student at **HBTU Kanpur**, working across the AI/ML stack — fine-tuning transformers, benchmarking retrieval, training classical models, and shipping the backend layer that makes them usable. I optimize for **measured results**, not demos.
 
 [![Portfolio](https://img.shields.io/badge/Portfolio-6C47FF?style=for-the-badge&logo=vercel&logoColor=white)](https://portfolio-ai-ml-ten.vercel.app/)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/devansh584)
@@ -13,26 +13,36 @@ Third-year ECE @ HBTU Kanpur. I work on **LLM routing**, **retrieval evaluation*
 
 </div>
 
-```console
-$ whoami
-devansh — third-year Electronics Engineering @ HBTU Kanpur
-
-$ cat focus.txt
-LLM routing · RAG evaluation · transformer NLP · production backends
-
-$ ls ~/currently-building
-routewise/   # difficulty-aware LLM router — live, on PyPI & npm
-```
+<table>
+  <tr>
+    <td align="center"><h3>5</h3><sub>end-to-end projects</sub></td>
+    <td align="center"><h3>329</h3><sub>automated tests shipped</sub></td>
+    <td align="center"><h3>77.5%</h3><sub>routing accuracy</sub></td>
+    <td align="center"><h3>~50%</h3><sub>lower LLM cost</sub></td>
+  </tr>
+</table>
 
 ---
 
-## ⚡ Featured Project
+## 🎯 What I bring
+
+| Area | Evidence |
+|---|---|
+| **LLM systems** | Difficulty-based routing across 3 cost tiers, tiered failover, semantic caching, budget controls, and a 329-test suite around it all |
+| **Applied ML** | Model selection from Ridge to LightGBM; fraud detection at **ROC-AUC 0.963**; threshold tuning for imbalanced data |
+| **NLP & transformers** | Fine-tuned **MuRIL (110M)** on Hinglish text for **+21 pts** over baseline; intent classification and code-mixed preprocessing |
+| **Retrieval & evaluation** | Benchmarked **13 RAG configurations**; best **Recall@5 0.944** and **MRR 0.910**; Recall@1 **+14.8 pts** from hybrid + reranking |
+| **Production engineering** | FastAPI services, Docker, Postgres, SSE streaming, GitHub Actions, CodeQL, Prometheus, and SDK/CLI surfaces |
+
+---
+
+## ⚡ Featured build
 
 ### RouteWise — Cost-Aware LLM Router
 
 > **Route every query to the cheapest model that answers it well.**
 
-Most teams pay frontier prices for every request. RouteWise scores each query's **difficulty** first, then sends it to the **cheapest tier that can handle it** — frontier quality where it matters, small-model prices everywhere else. Drop-in OpenAI-compatible, zero routing rules to hand-write.
+Most teams pay frontier prices for every request. RouteWise scores a query's **difficulty** first, then sends it to the **cheapest tier that can handle it** — frontier quality where it matters, small-model prices everywhere else. Drop-in OpenAI-compatible, with no routing rules to hand-write.
 
 [![Repo](https://img.shields.io/badge/Source-llm--router-181717?style=flat-square&logo=github)](https://github.com/Ishan-5/llm-router)
 [![Live](https://img.shields.io/badge/Live_Demo-000000?style=flat-square&logo=vercel)](https://llm-router-nine-eta.vercel.app/)
@@ -59,81 +69,91 @@ Most teams pay frontier prices for every request. RouteWise scores each query's 
     <td align="center"><h3>0.86</h3><sub>Spearman correlation</sub></td>
     <td align="center"><h3>1.018</h3><sub>MAE</sub></td>
     <td align="center"><h3>16.5 ms</h3><sub>local scoring</sub></td>
-    <td align="center"><h3>~50%</h3><sub>lower cost vs frontier</sub></td>
+    <td align="center"><h3>~50%</h3><sub>cheaper than frontier</sub></td>
   </tr>
 </table>
 
-**Under the hood**
+**How it was built**
 
-- **The model** — a LightGBM ensemble on MiniLM embeddings, chosen over Ridge, RidgeCV, and RandomForest, trained on **8,000+ Claude-verified labels**.
-- **The policies** — one general router, plus a support-tuned model (17,600 labeled tickets) exposed as two threshold cuts at **80% and 86% frontier recall**.
-- **The proof** — a blind pairwise A/B (n=56 easy queries) where the cheap tier matched or beat frontier **75%** of the time (95% CI 62–85%). Along the way I found and fixed a judge bug that had been silently reporting 100% ties.
-- **The guardrails** — prompt-injection and PII screening, a 0.95-cosine semantic cache, per-key budget caps, circuit breakers, round-robin key balancing, and tier step-down failover (frontier → mid/cheap across OpenRouter and Groq, Gemini as last resort).
-- **The surface area** — a drop-in `/v1/chat/completions` endpoint, SSE token streaming, a live routing dashboard, a Python SDK on PyPI, a zero-dependency npm CLI, an MCP server, and thumbs up/down feedback persisted for retraining.
-- **The boring stuff that matters** — **329 automated tests**, GitHub Actions CI, CodeQL, Prometheus metrics, and webhook alerts on cost, error, and latency thresholds.
+- **Model** — a LightGBM ensemble on MiniLM embeddings, picked over Ridge, RidgeCV, and RandomForest, trained on **8,000+ Claude-verified labels**.
+- **Policies** — a general router plus a support-tuned model (17,600 tickets) exposed as two threshold cuts at **80% and 86% frontier recall**.
+- **Validation** — a blind pairwise A/B (n=56) where the cheap tier matched or beat frontier **75%** of the time (95% CI 62–85%). I also found and fixed a judge bug that had been silently reporting 100% ties.
+- **Reliability** — prompt-injection and PII screening, a 0.95-cosine semantic cache, circuit breakers, key balancing, and tier step-down failover across OpenRouter and Groq.
+- **Surface area** — drop-in `/v1/chat/completions`, SSE streaming, live routing dashboard, Python SDK, npm CLI, MCP server, and persisted user feedback for retraining.
+- **Operations** — **329 automated tests**, CI, CodeQL, Prometheus metrics, and webhook alerts on cost, error, and latency.
 
-<sub>`Python` · `FastAPI` · `LightGBM` · `React` · `PostgreSQL` · `Docker` · `Prometheus` · `Groq` · `OpenRouter`</sub>
+<sub>`Python` · `FastAPI` · `LightGBM` · `React` · `PostgreSQL` · `Docker` · `Prometheus`</sub>
 
 ---
 
-## 🧪 More builds
+## 🧪 Selected work
 
 | Project | What it does | Headline result |
 |---|---|---|
-| [**RAG Stress-Tester**](https://github.com/Ishan-5/rag-stress-tester) | 13 RAG configs × 4 chunking × 3 embedders × 3 retrievers, scored on 500 SQuAD v2.0 queries each | Hybrid + reranking lifted **Recall@1 +14.8 pts** (0.868 vs 0.720); best **Recall@5 0.944** |
-| [**Hinglish Sentiment**](https://github.com/Ishan-5/Hinglish-Sentiment-Analysis) | Fine-tuned **MuRIL (110M)** for 3-class Hinglish sentiment on 3,190 YouTube comments | **66% accuracy**, 0.65 macro-F1 — **+21 pts** over majority baseline |
-| [**Fraud Detector**](https://github.com/Ishan-5/credit-card-fraud-detector) | 284K transactions, threshold-tuned and shipped as a REST API | **ROC-AUC 0.963**, **F1 0.89** |
-| [**Mastercard Rebuild**](https://github.com/Ishan-5/Mastercard-Career-Chatbot-Improved-Demo) | Black-box tested a live chatbot, documented 9 NLP failures, rebuilt the classifier | **85.35%** test accuracy |
+| [**RAG Stress-Tester**](https://github.com/Ishan-5/rag-stress-tester) | 13 RAG configs × 4 chunking strategies × 3 embedders × 3 retrievers, scored on 500 SQuAD v2.0 queries each | **Recall@1 +14.8 pts**; best **Recall@5 0.944** |
+| [**Hinglish Sentiment**](https://github.com/Ishan-5/Hinglish-Sentiment-Analysis) | Fine-tuned MuRIL (110M) for 3-class sentiment on 3,190 code-mixed YouTube comments | **66% accuracy** — **+21 pts** over baseline |
+| [**Fraud Detector**](https://github.com/Ishan-5/credit-card-fraud-detector) | 284K transactions, threshold-tuned and deployed as a REST API | **ROC-AUC 0.963**, **F1 0.89** |
+| [**Mastercard Rebuild**](https://github.com/Ishan-5/Mastercard-Career-Chatbot-Improved-Demo) | Black-box tested a live chatbot, found 9 NLP failures, rebuilt the classifier on a custom dataset | **85.35%** test accuracy |
 
 ---
 
-## 🛠 Stack
+## 🛠 Toolbox
 
-| Area | Tools |
-|---|---|
-| **Core** | `Python` · `SQL` |
-| **ML / DL** | `PyTorch` · `Hugging Face` · `scikit-learn` · `LightGBM` · `XGBoost` · `BERT` · `MuRIL` |
-| **Retrieval** | `ChromaDB` · `BM25` · `hybrid search` · `cross-encoder reranking` · `semantic chunking` |
-| **Backend** | `FastAPI` · `Flask` · `Streamlit` · `REST APIs` · `Docker` |
-| **Infra / Data** | `PostgreSQL` · `MongoDB` · `GitHub Actions` · `CodeQL` · `Prometheus` · `Render` |
+**Languages**  
+![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
+![SQL](https://img.shields.io/badge/SQL-4479A1?style=flat-square&logo=postgresql&logoColor=white)
+
+**ML & Deep Learning**  
+![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?style=flat-square&logo=pytorch&logoColor=white)
+![Hugging Face](https://img.shields.io/badge/Hugging_Face-FFD21E?style=flat-square&logo=huggingface&logoColor=black)
+![scikit-learn](https://img.shields.io/badge/scikit--learn-F7931E?style=flat-square&logo=scikitlearn&logoColor=white)
+![LightGBM](https://img.shields.io/badge/LightGBM-02569B?style=flat-square)
+![XGBoost](https://img.shields.io/badge/XGBoost-189FDD?style=flat-square&logo=xgboost&logoColor=white)
+
+**LLM & Retrieval**  
+![LangChain](https://img.shields.io/badge/LangChain-1C3C3C?style=flat-square&logo=langchain&logoColor=white)
+![LangGraph](https://img.shields.io/badge/LangGraph-1C3C3C?style=flat-square)
+![ChromaDB](https://img.shields.io/badge/ChromaDB-FF6B35?style=flat-square)
+![BM25](https://img.shields.io/badge/BM25-4B5563?style=flat-square)
+![sentence-transformers](https://img.shields.io/badge/sentence--transformers-FFD21E?style=flat-square&logo=huggingface&logoColor=black)
+
+**Backend & Deployment**  
+![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=flat-square&logo=fastapi&logoColor=white)
+![Flask](https://img.shields.io/badge/Flask-000000?style=flat-square&logo=flask&logoColor=white)
+![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?style=flat-square&logo=streamlit&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white)
+![Render](https://img.shields.io/badge/Render-46E3B7?style=flat-square&logo=render&logoColor=black)
+
+**Data & Ops**  
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=flat-square&logo=postgresql&logoColor=white)
+![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=flat-square&logo=mongodb&logoColor=white)
+![Supabase](https://img.shields.io/badge/Supabase-3FCF8E?style=flat-square&logo=supabase&logoColor=white)
+![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?style=flat-square&logo=githubactions&logoColor=white)
+![Prometheus](https://img.shields.io/badge/Prometheus-E6522C?style=flat-square&logo=prometheus&logoColor=white)
 
 ---
 
-## 📈 Signal
+## 🧠 How I work
+
+1. **Measure before modeling.** Every project starts with a baseline and a metric I can defend.
+2. **Pick the simplest model that wins.** LightGBM beat fancier options because the benchmark said so — not because it was fashionable.
+3. **Evaluate like a user.** Blind pairwise A/B, not just offline scores.
+4. **Ship the boring parts.** Tests, CI, alerts, and failover are part of the system, not cleanup.
+
+> *The interesting part of ML isn't the model. It's everything around it — the baseline you beat, the eval you trust, and the request that doesn't fall over at 3 a.m.*
+
+**Right now:** going deeper on agentic workflows, LLM fine-tuning, and evaluation harnesses.
+
+---
 
 <div align="center">
 
-<img height="165" src="https://github-readme-stats.vercel.app/api?username=Ishan-5&show_icons=true&include_all_commits=true&count_private=true&hide_border=true&theme=tokyonight" alt="GitHub stats" />
-<img height="165" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Ishan-5&layout=compact&langs_count=8&hide_border=true&theme=tokyonight" alt="Top languages" />
+### Hiring for an AI/ML role — or have a problem worth modeling?
 
-<img src="https://github-readme-activity-graph.vercel.app/graph?username=Ishan-5&theme=tokyo-night&hide_border=true&area=true" alt="Contribution activity" />
+I'm open to **internships**, **research collaborations**, and **open-source work** in LLMs, applied ML, and NLP.
 
-</div>
-
----
-
-## 🧭 How I work
-
-```python
-principles = [
-    "Measure first — a number beats a hunch.",
-    "The cheapest model that works is the right model.",
-    "If it isn't tested, it isn't shipped.",
-    "Evaluation is a product feature, not an afterthought.",
-]
-```
-
-**Currently exploring:** agentic workflows · LLM fine-tuning · routing and eval at scale
-**Open to:** AI/ML internships · research collaborations · open-source contributions
-
----
-
-<div align="center">
-
-### Got a hard retrieval, routing, or NLP problem?
-
-[![Say hello](https://img.shields.io/badge/devansh.7711%40gmail.com-EA4335?style=for-the-badge&logo=gmail&logoColor=white)](mailto:devansh.7711@gmail.com)
-[![Connect](https://img.shields.io/badge/Let's_connect-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/devansh584)
+[![Email](https://img.shields.io/badge/devansh.7711%40gmail.com-EA4335?style=for-the-badge&logo=gmail&logoColor=white)](mailto:devansh.7711@gmail.com)
+[![LinkedIn](https://img.shields.io/badge/Connect_with_me-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/devansh584)
 
 <sub>HBTU Kanpur · B.Tech Electronics Engineering · 2024–2028</sub>
 
