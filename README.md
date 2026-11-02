@@ -148,6 +148,6 @@ I'm open to **internships**, **research collaborations**, and **open-source work
 [![Email](https://img.shields.io/badge/devansh.7711%40gmail.com-EA4335?style=for-the-badge&logo=gmail&logoColor=white)](mailto:devansh.7711@gmail.com)
 [![LinkedIn](https://img.shields.io/badge/Connect_with_me-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/devansh584)
 
-<sub>HBTU Kanpur · B.Tech Electronics Engineering · 2024–2028</sub>
+<sub>HBTU Kanpur · B.Tech Electronics Engineering · CGPA - 8.03(Till 4th Semester) · 2024–2028</sub>
 
 </div>
